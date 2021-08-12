@@ -1,0 +1,65 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local ON = Instance.new("TextButton")
+local OFF = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Main.Position = UDim2.new(0.540647089, 0, 0.402453989, 0)
+Main.Size = UDim2.new(0, 482, 0, 140)
+Main.Active = true
+Main.Draggable = true
+
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+TextLabel.Position = UDim2.new(-0.0020014972, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 482, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "          Trade Tower Autoclicker | Made by 3ditz#0611                  "
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+
+ON.Name = "ON"
+ON.Parent = Main
+ON.BackgroundColor3 = Color3.fromRGB(0, 255, 51)
+ON.Position = UDim2.new(0, 0, 0.507675946, 0)
+ON.Size = UDim2.new(0, 200, 0, 50)
+ON.Font = Enum.Font.SourceSans
+ON.Text = "ON"
+ON.TextColor3 = Color3.fromRGB(0, 0, 0)
+ON.TextSize = 14.000
+ON.MouseButton1Down:connect(function()
+	_G.autotap = true;
+	while _G.autotap == true do
+		game:GetService("ReplicatedStorage").Events.ClientClick:FireServer()   
+		wait(0.20)
+	end 
+end)
+
+OFF.Name = "OFF"
+OFF.Parent = Main
+OFF.BackgroundColor3 = Color3.fromRGB(115, 10, 12)
+OFF.Position = UDim2.new(0.585062265, 0, 0.507675946, 0)
+OFF.Size = UDim2.new(0, 200, 0, 50)
+OFF.Font = Enum.Font.SourceSans
+OFF.Text = "OFF"
+OFF.TextColor3 = Color3.fromRGB(0, 0, 0)
+OFF.TextSize = 14.000
+OFF.MouseButton1Down:connect(function()
+	_G.autotap = false;
+	while _G.autotap == true do
+		game:GetService("ReplicatedStorage").Events.ClientClick:FireServer()   
+		wait(0.20)
+	end 
+end)
